@@ -1,0 +1,135 @@
+## mappings
+{
+  "address_line": {
+    "type": "keyword"
+  },
+  "area": {
+    "type": "keyword"
+  },
+  "borough_id": {
+    "type": "long"
+  },
+  "borough_name": {
+    "type": "keyword"
+  },
+  "county_id": {
+    "type": "long"
+  },
+  "county_name": {
+    "type": "keyword"
+  },
+  "election_day_voting": {
+    "type": "long"
+  },
+  "gps_coordinates": {
+    "type": "keyword"
+  },
+  "info_text": {
+    "type": "text"
+  },
+  "municipality_id": {
+    "type": "long"
+  },
+  "municipality_name": {
+    "type": "keyword"
+  },
+  "opening_hours": {
+    "type": "keyword"
+  },
+  "polling_place_id": {
+    "type": "long"
+  },
+  "polling_place_name": {
+    "type": "keyword"
+  },
+  "postal_code": {
+    "type": "long"
+  },
+  "location": {
+    "type": "geo_point"
+  }
+}
+
+## ingest pipeline
+{
+  "description": "Ingest pipeline created by file structure finder",
+  "processors": [
+    {
+      "csv": {
+        "field": "message",
+        "target_fields": [
+          "county_id",
+          "county_name",
+          "municipality_id",
+          "municipality_name",
+          "borough_id",
+          "borough_name",
+          "polling_place_id",
+          "polling_place_name",
+          "address_line",
+          "postal_code",
+          "area",
+          "info_text",
+          "gps_coordinates",
+          "election_day_voting",
+          "opening_hours"
+        ],
+        "separator": ";",
+        "ignore_missing": false
+      }
+    },
+    {
+      "convert": {
+        "field": "borough_id",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "county_id",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "election_day_voting",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "municipality_id",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "polling_place_id",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "postal_code",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "message"
+      }
+    },
+    {
+      "append": {
+        "field": "location",
+        "value": ["{{gps_coordinates}}"]
+      }
+    }
+  ]
+}
