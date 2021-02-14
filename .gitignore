@@ -1,1 +1,6 @@
 elasticsearch7-docker/data/
+
+node_modules/
+
+
+.env
