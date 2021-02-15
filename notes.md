@@ -1,4 +1,4 @@
-# Solidsquare case - 11.02.2021
+# case - 11.02.2021
 
 Etter å ha lest oppgaven tenkte jeg raskt igjennom føgende teknologier for å løse oppgaven:
 
