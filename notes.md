@@ -39,3 +39,5 @@ Satte opp elasticsearch med docker. Brukte Kibana File Data Visualizer wizard fo
       }
     }
 ```
+
+Selv om elasticsearch er rakt er query DSL-en kronglete å skrive.
