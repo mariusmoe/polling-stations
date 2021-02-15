@@ -33,6 +33,13 @@ $ elasticdump \
     --type=data
 ```
 
+``` shell
+elasticdump \
+  --input=./index_analyzer.json \
+  --output=http://localhost:9200/polling-station \
+  --type=analyzer
+```
+
 I hver sin terminal:
 
 ``` shell
