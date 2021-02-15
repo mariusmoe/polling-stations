@@ -1,6 +1,6 @@
 import express from "express";
 import validateSearch from "./validation/validateSearchParams";
-import SearchController from "./controllers/SearchController";
+import SearchController from "./controllers/searchController";
 import SimpleDataController from "./controllers/simpleDataController";
 
 const searchController = new SearchController();
