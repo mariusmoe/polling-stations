@@ -32,6 +32,8 @@ $ elasticdump \
     --output=http://localhost:9200/polling-station \
     --type=data
 ```
+Gå til http://localhost:5601/ stack management > Index patterns og klikk på 'create index pattern'
+Skriv inn polling-station og følg veiviseren.
 
 ``` shell
 elasticdump \
