@@ -21,17 +21,17 @@ $ docker-compose up -d
 ``` shell
 $ cd ..
 $ elasticdump \
-    --input=./index_data.json \
+    --input=./index_mapping.json \
     --output=http://localhost:9200/polling-station \
-    --type=data
+    --type=mapping
 ```
 
 ``` shell
 $ elasticdump \
-    --input=./index_mapping.json \
+    --input=./index_data.json \
     --output=http://localhost:9200/polling-station \
-    --type=mapping
-``` 
+    --type=data
+```
 
 I hver sin terminal:
 
