@@ -19,16 +19,17 @@ $ docker-compose up -d
 ```
 
 ``` shell
+$ cd ..
 $ elasticdump \
-    --input=../my_index_data.json \
+    --input=./index_data.json \
     --output=http://localhost:9200/polling-station \
     --type=data
 ```
 
 ``` shell
 $ elasticdump \
-    --input=http://localhost:9200/polling-station \
-    --output=./index_mapping.json \
+    --input=./index_mapping.json \
+    --output=http://localhost:9200/polling-station \
     --type=mapping
 ``` 
 
