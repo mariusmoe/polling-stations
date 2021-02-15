@@ -1,0 +1,9 @@
+.flexContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchButton {
+  width: 100%;
+  margin-bottom: 20px;
+}

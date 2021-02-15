@@ -1,15 +1,16 @@
 import express from "express";
 import bodyParser from "body-parser";
 import router from "./router";
+var cors = require('cors')
 require('dotenv').config()
 
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-
+app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/", router);
+app.use("/api/", router);
 
 app.get("/health", (req, res) => res.send({ status: "alive!" }));
 

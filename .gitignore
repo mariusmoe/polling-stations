@@ -3,4 +3,6 @@ elasticsearch7-docker/data/
 node_modules/
 
 
-.env
+
+client/src/environments/environment.ts
+server/.env

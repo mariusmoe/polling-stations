@@ -1,0 +1,24 @@
+<mat-card>
+  <form [formGroup]="form" (keyup.enter)="startSearch()">
+    <formly-form
+      [model]="model"
+      [fields]="fields"
+      [options]="options"
+      [form]="form"
+    ></formly-form>
+  </form>
+  <button
+    *ngIf="model.showAdvancedSearch"
+    mat-raised-button
+    color="primary"
+    class="searchButton"
+    (click)="startSearch()"
+  >
+    Søk!
+  </button>
+  <div class="flexContainer">
+    <button mat-button (click)="toggleShowAdvancedSearch()">
+      {{ model.showAdvancedSearch ? "Vis mindre" : "Vis mer" }}
+    </button>
+  </div>
+</mat-card>

@@ -9,13 +9,14 @@ const validateSearch = createValidation({
       distance: Yup.string().required(),
       location: Yup.object()
         .shape({
-          lat: Yup.number().required(),
-          lon: Yup.number().required(),
+          lat: Yup.number(),
+          lon: Yup.number(),
         })
         .required(),
     }),
     municipalityName: Yup.string(),
   }),
+  place: Yup.string()
 });
 
 export default validateSearch;

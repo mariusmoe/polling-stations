@@ -1,0 +1,32 @@
+agm-map {
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.floating-search {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  height: 550px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.floating-result {
+  position: absolute;
+  bottom: 0px;
+  width: 80%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}

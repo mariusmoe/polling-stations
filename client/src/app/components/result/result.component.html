@@ -1,0 +1,81 @@
+<div class="expand-search-button">
+  <button mat-fab color="primary" (click)="toggleExpandTable()">
+    <mat-icon
+      *ngIf="!expandedTable"
+      aria-hidden="false"
+      aria-label="Example home icon"
+      >expand_less</mat-icon
+    >
+    <mat-icon
+      *ngIf="expandedTable"
+      aria-hidden="false"
+      aria-label="Example home icon"
+      >expand_more</mat-icon
+    >
+  </button>
+</div>
+
+<!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns
+-->
+<mat-card
+  class="container"
+  [ngStyle]="{ height: expandedTable ? '550px' : '300px' }"
+>
+  <table
+    mat-table
+    [dataSource]="searchResult"
+    multiTemplateDataRows
+    class="mat-elevation-z8"
+  >
+    <ng-container
+      matColumnDef="{{ column }}"
+      *ngFor="let column of columnsToDisplay; let i = index"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ norwegianColumnNames[i] }}</th>
+      <td mat-cell *matCellDef="let element">{{ element._source[column] }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="columnsToDisplay.length"
+      >
+        <div
+          class="example-element-detail"
+          [@detailExpand]="
+            element == expandedElement ? 'expanded' : 'collapsed'
+          "
+        >
+          <ul>
+            <li>Fylke: {{ element._source.county_name }}</li>
+            <li>Kommune: {{ element._source.municipality_name }}</li>
+            <li>Navn: {{ element._source.polling_place_name }}</li>
+            <li>Addresse: {{ element._source.address_line }}</li>
+            <li>Postkode: {{ element._source.postal_code }}</li>
+            <li>Informasjon: {{ element._source.info_text }}</li>
+            <li>Åpningstider: {{ element._source.opening_hours }}</li>
+            <li>
+              Åpent på valgdagen:
+              {{ element._source.election_day_voting === 1 ? "ja" : "nei" }}
+            </li>
+          </ul>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr
+      mat-row
+      *matRowDef="let element; columns: columnsToDisplay"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="example-detail-row"
+    ></tr>
+  </table>
+</mat-card>
